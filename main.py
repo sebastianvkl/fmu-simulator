@@ -9,7 +9,6 @@ from typing import Optional
 
 import numpy as np
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import fmpy
@@ -31,7 +30,6 @@ UPLOAD_DIR = Path(tempfile.gettempdir()) / "fmu_uploads"
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 
-app.mount("/static", StaticFiles(directory=str(Path(__file__).parent)), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
